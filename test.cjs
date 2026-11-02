@@ -18,3 +18,10 @@ async function run(labels,initial={},p={name:'TEST NAME',studentId:'001234'}){
  console.log('PASS: actual field labels, reversed order, leading zero, existing content, ambiguous labels, unrequested pages, bundled assets and manifest.');
 })().catch(e=>{console.error(e);process.exit(1)});
 
+
+const {parseRoster}=require('./extension/roster.js');
+assert.deepEqual(parseRoster('张三,00123\n李四\t00045'),[{name:'张三',studentId:'00123'},{name:'李四',studentId:'00045'}]);
+assert.throws(()=>parseRoster('张三,00123\n李四,00123'));
+assert.throws(()=>parseRoster('张三'));
+assert.throws(()=>parseRoster(''));
+console.log('PASS: multiple people, tab separated rows, leading zeros, duplicate and malformed roster rejection.');

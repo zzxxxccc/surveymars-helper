@@ -1,10 +1,27 @@
 {
   "manifest_version": 3,
   "name": "SurveyMars 课堂填表助手",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "本机识别二维码，按题目名称填写姓名和学号，人工确认提交。",
-  "permissions": ["storage"],
-  "background": {"service_worker": "background.js"},
-  "action": {"default_title": "打开填表助手"},
-  "content_scripts": [{"matches": ["https://surveymars.com/q/*", "https://*.surveymars.com/q/*"], "js": ["fill.js"], "run_at": "document_idle"}]
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "打开填表助手"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://surveymars.com/q/*",
+        "https://*.surveymars.com/q/*"
+      ],
+      "js": [
+        "fill.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
 }
